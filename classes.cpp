@@ -6,6 +6,15 @@ stack::stack()
     top = NULL;
 }
 
+stack::stack(int *arr, int size)
+{
+    stack();
+    for (int i = 0; i < size; i++)
+    {
+        push(arr[i]);
+    }
+}
+
 stack::~stack()
 {
     list *r = new list();
@@ -53,6 +62,21 @@ int stack::pop()
 bool stack::isEmpty()
 {
     return (top == NULL);
+}
+
+queue::queue()
+{
+    s1 = stack();
+    s2 = stack();
+}
+
+queue::queue(int *arr, int size)
+{
+    queue();
+    for (int i = 0; i < size; i++)
+    {
+        enqueue(arr[i]);
+    }
 }
 
 void queue::enqueue(int value)
