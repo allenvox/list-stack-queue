@@ -1,6 +1,6 @@
 .PHONY: main
 all: main
-main: main.c classes.c
+main: main.cpp classes.cpp
 	g++ -Wall -Wextra -o $@ $^
 
 clean:
