@@ -5,6 +5,11 @@ class list
 public:
     int value;
     list *next;
+    list(int val);
+    ~list();
+    void add(int val);
+    list *remove(int val);
+    list *lookup(int val);
 };
 
 class stack
@@ -16,6 +21,7 @@ public:
     stack();
     stack(int *arr, int size);
     ~stack();
+    int peek();
     void push(int i);
     int pop();
     bool isEmpty();
@@ -28,6 +34,6 @@ class queue
 public:
     queue();
     queue(int *arr, int size);
-    void enqueue(int value);
+    void enqueue(int val);
     int dequeue();
 };

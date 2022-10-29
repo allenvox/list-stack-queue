@@ -1,6 +1,70 @@
 #include <iostream>
 #include "classes.hpp"
 
+list::list(int val)
+{
+    this->value = val;
+    this->next = NULL;
+}
+
+list::~list()
+{
+    delete this->next;
+}
+
+void list::add(int val)
+{
+    list *temp = this;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    list *node = new list(val);
+    node->value = val;
+    node->next = NULL;
+    temp->next = node;
+}
+
+list *list::lookup(int val)
+{
+    list *current = this;
+    while (current != NULL)
+    {
+        if (current->value == val)
+        {
+            std::cout << "Found " << val << "!" << std::endl;
+            return current;
+        }
+        current = current->next;
+    }
+    std::cout << val << " not found." << std::endl;
+    return NULL;
+}
+
+list *list::remove(int val)
+{
+    list *searched = lookup(val);
+    list *head = this;
+    if (searched != NULL)
+    {
+        if (head != searched)
+        {
+            list *parent = this;
+            while (parent->next != searched)
+            {
+                parent = parent->next;
+            }
+            parent->next = searched->next;
+        }
+        else
+        {
+            head = head->next;
+        }
+        delete searched;
+    }
+    return head;
+}
+
 stack::stack()
 {
     top = NULL;
@@ -17,7 +81,7 @@ stack::stack(int *arr, int size)
 
 stack::~stack()
 {
-    list *r = new list();
+    list *r = NULL;
     while (!isEmpty())
     {
         r = top;
@@ -29,7 +93,7 @@ stack::~stack()
 
 void stack::push(int i)
 {
-    list *r = new list();
+    list *r = new list(i);
     r->value = i;
     r->next = top;
     top = r;
@@ -48,7 +112,11 @@ int stack::pop()
             list *r = top;
             top = top->next;
             int x = r->value;
-            delete r;
+            if (r->value == -443987883)
+            {
+                throw "Underflow error.";
+            }
+            r = NULL;
             return x;
         }
     }
