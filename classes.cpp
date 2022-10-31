@@ -1,17 +1,6 @@
 #include <iostream>
 #include "classes.hpp"
 
-list::list(int val)
-{
-    this->value = val;
-    this->next = NULL;
-}
-
-list::~list()
-{
-    delete this->next;
-}
-
 void list::add(int val)
 {
     list *temp = this;
@@ -63,11 +52,6 @@ list *list::remove(int val)
         delete searched;
     }
     return head;
-}
-
-stack::stack()
-{
-    top = NULL;
 }
 
 stack::stack(int *arr, int size)
@@ -127,17 +111,6 @@ int stack::pop()
     return -1;
 }
 
-bool stack::isEmpty()
-{
-    return (top == NULL);
-}
-
-queue::queue()
-{
-    s1 = stack();
-    s2 = stack();
-}
-
 queue::queue(int *arr, int size)
 {
     queue();
@@ -158,9 +131,4 @@ void queue::enqueue(int value)
     {
         s1.push(s2.pop());
     }
-}
-
-int queue::dequeue()
-{
-    return s1.pop();
 }
