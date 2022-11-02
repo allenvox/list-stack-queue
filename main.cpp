@@ -19,11 +19,9 @@ int main()
     std::cout << s.pop() << std::endl;
     std::cout << s.pop() << std::endl;
     std::cout << s.pop() << std::endl;
-    std::cout << s.pop() << std::endl;
 
     std::cout << "\nqueue:" << std::endl;
     queue q(arr, 3);
-    std::cout << q.dequeue() << std::endl;
     std::cout << q.dequeue() << std::endl;
     std::cout << q.dequeue() << std::endl;
     std::cout << q.dequeue() << std::endl;
