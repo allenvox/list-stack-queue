@@ -78,7 +78,6 @@ stack::~stack()
 void stack::push(int i)
 {
     list *r = new list(i);
-    r->value = i;
     r->next = top;
     top = r;
 }
@@ -93,13 +92,10 @@ int stack::pop()
         }
         else
         {
+            // not working with empty stack - don't know why
             list *r = top;
             top = top->next;
             int x = r->value;
-            if (r->value == -443987883)
-            {
-                throw "Underflow error.";
-            }
             r = NULL;
             return x;
         }
