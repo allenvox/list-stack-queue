@@ -39,18 +39,15 @@ private:
     list *top;
 
 public:
-    stack()
-    {
-        top = NULL;
-    }
+    stack() : top(NULL) {}
     stack(int *arr, int size);
     ~stack();
-    int peek();
+    list *peek();
     void push(int i);
     int pop();
     bool isEmpty()
     {
-        return (top == NULL);
+        return (top == nullptr);
     }
 };
 
@@ -70,4 +67,5 @@ public:
     {
         return s1.pop();
     }
+    list *peek();
 };
